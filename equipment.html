@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electric City Photo Booths</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f472b6",
+              secondary: "#c084fc",
+              accent: "#60a5fa",
+            },
+            fontFamily: {
+              fancy: ['"Poppins"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s forwards;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 3px;
+        margin: 5px auto;
+        background: #f472b6;
+        transition: all 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 text-gray-800 font-fancy"
+  >
+    <!-- Transparent Navbar -->
+    <header class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/10">
+      <div
+        class="max-w-7xl mx-auto px-6 flex justify-between items-center h-24"
+      >
+        <!-- Logo -->
+        <a href="#" class="flex items-center">
+          <img
+            src="./images content/photo-booth-llc.png"
+            alt="Logo"
+            class="h-16 w-auto"
+          />
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-10 font-semibold text-lg">
+          <a href="./index.html" class="hover:text-pink-400">Home</a>
+          <a href="./about.html" class="hover:text-pink-400">About</a>
+          <a href="./packages.html" class="hover:text-pink-400">Packages</a>
+          <a href="./gallary.html" class="hover:text-pink-400">Gallary</a>
+          <a href="./contact.html" class="hover:text-pink-400">Contact</a>
+        </nav>
+
+        <!-- Mobile Hamburger -->
+        <div class="md:hidden z-50">
+          <button
+  id="menu-toggle"
+  aria-label="Open Menu"
+  class="relative flex flex-col items-center justify-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
+>
+  <!-- Optional Text Label -->
+  <span class="text-xs text-pink-500 mb-1 block">Menu</span>
+
+  <!-- Three Bars -->
+  <span class="block w-6 h-0.5 bg-pink-500 rounded mb-1 transition-all duration-300" id="bar1"></span>
+  <span class="block w-6 h-0.5 bg-pink-500 rounded mb-1 transition-all duration-300" id="bar2"></span>
+  <span class="block w-6 h-0.5 bg-pink-500 rounded transition-all duration-300" id="bar3"></span>
+</button>
+
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-md flex flex-col items-center justify-center space-y-10 transform -translate-y-full transition-transform duration-300 md:hidden"
+      >
+        <a href="./index.html" class="text-2xl hover:text-pink-400">Home</a>
+        <a href="./about.html" class="text-2xl hover:text-pink-400">About</a>
+        <a href="./packages.html" class="text-2xl hover:text-pink-400"
+          >Packages</a
+        >
+        <a href="./gallary.html" class="text-2xl hover:text-pink-400"
+          >Gallary</a
+        >
+        <a href="./contact.html" class="text-2xl hover:text-pink-400"
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const bar1 = document.getElementById("bar1");
+        const bar2 = document.getElementById("bar2");
+        const bar3 = document.getElementById("bar3");
+
+        toggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("-translate-y-full");
+          mobileMenu.classList.toggle("translate-y-0");
+
+          bar1.classList.toggle("rotate-45");
+          bar2.classList.toggle("opacity-0");
+          bar3.classList.toggle("-rotate-45");
+
+          bar1.classList.toggle("translate-y-2");
+          bar3.classList.toggle("-translate-y-2");
+        });
+
+        // Optional: close menu on link click
+        document.querySelectorAll("#mobile-menu a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("-translate-y-full");
+            mobileMenu.classList.remove("translate-y-0");
+
+            bar1.classList.remove("rotate-45", "translate-y-2");
+            bar2.classList.remove("opacity-0");
+            bar3.classList.remove("-rotate-45", "-translate-y-2");
+          });
+        });
+      });
+    </script>
+
+   <section class="bg-white py-12 sm:py-20 px-4 sm:px-8 font-[Poppins]">
+  <!-- Header -->
+  <div class="max-w-3xl mx-auto mt-8 max-sm:pt-8 text-center mb-10 sm:mb-16">
+    <h1 class="text-3xl sm:text-5xl font-bold text-pink-600 mb-3 sm:mb-5">
+      Our Equipment Showcase
+    </h1>
+    <p class="text-gray-600 text-base sm:text-lg leading-relaxed">
+        Our DSLR photo booth, powered by a 24-megapixel Canon EOS R100 and professional studio lighting from a Godox MS3000-V flash, ensures beautiful lighting and professional captures in every scenario.  Mesmerizing LEDs feature over 100 sequences to beautifully brand your experience. The DNP DS620A photo printer ensures crisp, clear and vibrant prints within seconds.
+    </p>
+  </div>
+
+  <!-- Responsive Grid -->
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
+    <img src="./images content/IMG_4466.jpeg" class="w-full aspect-square object-cover rounded-xl shadow hover:scale-105 transition duration-300" alt="Equipment 1" />
+    <img src="./images content/IMG_4467.jpeg" class="w-full aspect-square object-cover rounded-xl shadow hover:scale-105 transition duration-300" alt="Equipment 2" />
+    <img src="./images content/IMG_4468.jpeg" class="w-full aspect-square object-cover rounded-xl shadow hover:scale-105 transition duration-300" alt="Equipment 3" />
+    <img src="./images content/IMG_5168.jpg" class="w-full aspect-square object-cover rounded-xl shadow hover:scale-105 transition duration-300" alt="Equipment 4" />
+    <img src="./images content/GuacChipsPhotosHighRes-030.jpg" class="w-full aspect-square object-cover rounded-xl shadow hover:scale-105 transition duration-300" alt="Equipment 5" />
+    <img src="./images content/GuacChipsPhotosHighRes-026.jpg" class="w-full aspect-square object-cover rounded-xl shadow hover:scale-105 transition duration-300" alt="Equipment 6" />
+    <img src="./images content/IMG_5355.jpg" class="w-full hidden sm:block aspect-square object-cover rounded-xl shadow hover:scale-105 transition duration-300" alt="Equipment 7" />
+    <img src="./images content/GuacChipsPhotosHighRes-326.jpeg" class="w-full aspect-square object-cover rounded-xl shadow hover:scale-105 transition duration-300" alt="Equipment 8" />
+    <img src="./images content/Guac Rendering41.png" class="w-full aspect-square object-cover rounded-xl shadow hover:scale-105 transition duration-300" alt="Equipment 9" />
+    
+  </div>
+
+</section>
+
+
+    <footer
+      class="bg-gradient-to-br from-pink-100 via-pink-200 to-pink-100 text-gray-800 pt-10 pb-6"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 text-left"
+      >
+        <!-- Logo & Tagline -->
+        <div>
+          <img
+            src="./images content/photo-booth-llc.png"
+            alt="Logo"
+            class="h-16 mb-4"
+          />
+          <p class="text-sm text-gray-700">
+            Electric City Photo Booths, LLC<br />
+            Creating Memories One Click at a Time! 
+          </p>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div>
+          <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="./index.html" class="hover:text-pink-500 transition"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="./about.html" class="hover:text-pink-500 transition"
+                >About</a
+              >
+            </li>
+            <li>
+              <a href="./packages.html" class="hover:text-pink-500 transition"
+                >Packages</a
+              >
+            </li>
+            <li>
+              <a href="./gallary.html" class="hover:text-pink-500 transition"
+                >Gallary</a
+              >
+            </li>
+            <li>
+              <a href="./contact.html" class="hover:text-pink-500 transition"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Details -->
+        <div>
+          <h3 class="font-bold text-lg mb-4">Contact</h3>
+          <p class="text-sm mb-2"> 109 Canfield Road Honea Path SC, 29654</p>
+          <p class="text-sm mb-2">📞 (864) 617-4554</p>
+          <p class="text-sm mb-4">📧 info@electriccityphotobooths.com</p>
+
+          <!-- Social Icons -->
+          <div class="flex space-x-4 mt-2">
+            <a
+              href="https://www.facebook.com/share/19gUdvzHNA/"
+              target="_blank"
+              class="text-pink-600 hover:text-pink-800 transition transform hover:scale-110"
+            >
+              <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/electriccityphotoboothsllc/"
+              target="_blank"
+              class="text-pink-600 hover:text-pink-800 transition transform hover:scale-110"
+            >
+              <i class="fab fa-instagram fa-lg"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div>
+          <h3 class="font-bold text-lg mb-4">Subscribe</h3>
+          <p class="text-sm mb-3">Subscribe to our latest newsletters 💌</p>
+          <form class="flex flex-col sm:flex-row gap-2">
+            <input
+              type="email"
+              placeholder="Your email"
+              class="px-3 py-2 rounded-md text-sm border border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 w-full"
+            />
+            <button
+              type="submit"
+              class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 transition text-sm"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div
+        class="mt-10 border-t border-pink-300 pt-4 text-center text-sm text-gray-600"
+      >
+        &copy; <span id="year"></span> Electric City Photo Booths, LLC. All
+        rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
